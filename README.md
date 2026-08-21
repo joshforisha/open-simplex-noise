@@ -2,14 +2,14 @@
 
 TypeScript implementation of [OpenSimplex noise](https://en.wikipedia.org/wiki/OpenSimplex_noise).
 
-* Deno module: [https://deno.land/x/open_simplex_noise](https://deno.land/x/open_simplex_noise)
-* NPM package: [open-simplex-noise](https://www.npmjs.com/package/open-simplex-noise)
+- JSR package: [@joshforisha/open-simplex-noise](https://jsr.io/@joshforisha/open-simplex-noise)
+- NPM package: [open-simplex-noise](https://www.npmjs.com/package/open-simplex-noise)
 
 ## Example
 
 ```javascript
 import { makeNoise2D } from "open-simplex-noise";
-// import { makeNoise2D } from "https://deno.land/x/open_simplex_noise/mod.ts"
+// import { makeNoise2D } from "jsr:@joshforisha/open-simplex-noise"
 
 const [width, height] = [888, 222];
 const canvas = document.querySelector("canvas");
@@ -43,9 +43,9 @@ For _fractal noise_ results, which typically involves scaling frequencies and st
 Each noise function returns a float between -1 and 1, exclusive: `(-1.0, 1.0)`.
 
 ```typescript
-type Noise2D = (x: number, y: number) => number
-type Noise3D = (x: number, y: number, z: number) => number
-type Noise4D = (x: number, y: number, z: number, w: number) => number
+type Noise2D = (x: number, y: number) => number;
+type Noise3D = (x: number, y: number, z: number) => number;
+type Noise4D = (x: number, y: number, z: number, w: number) => number;
 ```
 
 #### `makeNoise2D (seed: number) => Noise2D`

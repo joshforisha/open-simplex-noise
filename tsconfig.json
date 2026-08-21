@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "declaration": true,
-    "module": "commonjs",
-    "noImplicitAny": true,
+    "declarationMap": true,
+    "module": "nodenext",
     "noImplicitReturns": true,
-    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "lib",
+    "rewriteRelativeImportExtensions": true,
     "rootDir": "src",
-    "target": "ES5"
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES2022"
   },
   "exclude": ["**/*_test.ts"],
   "include": ["src/*.ts"]

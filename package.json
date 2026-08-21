@@ -1,6 +1,6 @@
 {
   "name": "open-simplex-noise",
-  "version": "2.5.0",
+  "version": "3.0.0-pre",
   "description": "OpenSimplex noise for TypeScript/JavaScript",
   "keywords": [
     "noise",
@@ -8,15 +8,15 @@
     "procedural-generation",
     "simplex-noise"
   ],
-  "homepage": "https://github.com/joshforisha/open-simplex-noise-js#readme",
+  "homepage": "https://github.com/joshforisha/open-simplex-noise#readme",
   "author": "Josh Forisha <josh@forisha.com>",
   "license": "Unlicense",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joshforisha/open-simplex-noise-js.git"
+    "url": "git+https://github.com/joshforisha/open-simplex-noise.git"
   },
   "bugs": {
-    "url": "https://github.com/joshforisha/open-simplex-noise-js/issues"
+    "url": "https://github.com/joshforisha/open-simplex-noise/issues"
   },
   "contributors": [
     "Florian Völker <Neirolf2030@web.de>"
@@ -24,15 +24,26 @@
   "files": [
     "lib/"
   ],
-  "main": "lib/mod.js",
-  "types": "lib/mod.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/mod.d.ts",
+      "default": "./lib/mod.js"
+    }
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "compile": "tsc && denoify",
-    "test": "tsc --noEmit && deno test deno_lib",
+    "compile": "tsc",
+    "format": "prettier --check .",
+    "test": "tsc --noEmit && deno test src",
     "watch": "tsc --watch"
   },
   "devDependencies": {
-    "denoify": "^0.6.5",
-    "typescript": "^4.2.4"
+    "jsr": "^0.14.3",
+    "prettier": "^3.9.6",
+    "typescript": "^7.0.2"
   }
 }

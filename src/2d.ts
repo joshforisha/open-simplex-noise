@@ -1,6 +1,6 @@
 // This is free and unencumbered software released into the public domain
 
-import shuffleSeed from "./shuffle_seed";
+import shuffleSeed from "./shuffle_seed.ts";
 
 const NORM_2D = 1.0 / 47.0;
 const SQUISH_2D = (Math.sqrt(2 + 1) - 1) / 2;
@@ -83,7 +83,8 @@ export function makeNoise2D(clientSeed: number): Noise2D {
     const yins = ys - ysb;
 
     const inSum = xins + yins;
-    const hash = (xins - yins + 1) |
+    const hash =
+      (xins - yins + 1) |
       (inSum << 1) |
       ((inSum + yins) << 2) |
       ((inSum + xins) << 4);
@@ -121,75 +122,13 @@ const base2D = [
   [1, 1, 0, 1, 0, 1, 2, 1, 1],
 ];
 
-const gradients2D = [
-  5,
-  2,
-  2,
-  5,
-  -5,
-  2,
-  -2,
-  5,
-  5,
-  -2,
-  2,
-  -5,
-  -5,
-  -2,
-  -2,
-  -5,
-];
+const gradients2D = [5, 2, 2, 5, -5, 2, -2, 5, 5, -2, 2, -5, -5, -2, -2, -5];
 
 const lookupPairs2D = [
-  0,
-  1,
-  1,
-  0,
-  4,
-  1,
-  17,
-  0,
-  20,
-  2,
-  21,
-  2,
-  22,
-  5,
-  23,
-  5,
-  26,
-  4,
-  39,
-  3,
-  42,
-  4,
-  43,
+  0, 1, 1, 0, 4, 1, 17, 0, 20, 2, 21, 2, 22, 5, 23, 5, 26, 4, 39, 3, 42, 4, 43,
   3,
 ];
 
 const p2D = [
-  0,
-  0,
-  1,
-  -1,
-  0,
-  0,
-  -1,
-  1,
-  0,
-  2,
-  1,
-  1,
-  1,
-  2,
-  2,
-  0,
-  1,
-  2,
-  0,
-  2,
-  1,
-  0,
-  0,
-  0,
+  0, 0, 1, -1, 0, 0, -1, 1, 0, 2, 1, 1, 1, 2, 2, 0, 1, 2, 0, 2, 1, 0, 0, 0,
 ];
