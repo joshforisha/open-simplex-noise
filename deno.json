@@ -1,6 +1,6 @@
 {
   "name": "@joshforisha/open-simplex-noise",
-  "version": "3.0.0-pre",
+  "version": "3.0.0-pre2",
   "exports": "./src/mod.ts",
   "license": "Unlicense",
   "publish": {

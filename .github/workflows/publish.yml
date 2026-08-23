@@ -28,8 +28,6 @@ jobs:
             echo "tag=latest" >> "$GITHUB_OUTPUT"
           fi
       - run: npm publish --provenance --tag ${{ steps.version.outputs.tag }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   jsr:
     runs-on: ubuntu-latest
