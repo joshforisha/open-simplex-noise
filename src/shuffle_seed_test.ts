@@ -1,6 +1,7 @@
 // This is free and unencumbered software released into the public domain
 
-import { assertEquals, assertNotEquals } from "jsr:@std/assert@^1";
+import assert from "node:assert/strict";
+import { test } from "node:test";
 
 import shuffleSeed from "./shuffle_seed.ts";
 
@@ -10,15 +11,15 @@ function seedOf(value: number): Uint32Array<ArrayBuffer> {
   return seed;
 }
 
-Deno.test("shuffleSeed is deterministic", () => {
-  assertEquals(shuffleSeed(seedOf(42))[0], shuffleSeed(seedOf(42))[0]);
+test("shuffleSeed is deterministic", () => {
+  assert.strictEqual(shuffleSeed(seedOf(42))[0], shuffleSeed(seedOf(42))[0]);
 });
 
-Deno.test("shuffleSeed applies the expected LCG step", () => {
-  assertEquals(shuffleSeed(seedOf(0))[0], 1013904223);
-  assertEquals(shuffleSeed(seedOf(42))[0], 1083814273);
+test("shuffleSeed applies the expected LCG step", () => {
+  assert.strictEqual(shuffleSeed(seedOf(0))[0], 1013904223);
+  assert.strictEqual(shuffleSeed(seedOf(42))[0], 1083814273);
 });
 
-Deno.test("shuffleSeed changes the value", () => {
-  assertNotEquals(shuffleSeed(seedOf(42))[0], 42);
+test("shuffleSeed changes the value", () => {
+  assert.notStrictEqual(shuffleSeed(seedOf(42))[0], 42);
 });

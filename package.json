@@ -38,10 +38,11 @@
   "scripts": {
     "compile": "tsc",
     "format": "prettier --check .",
-    "test": "tsc --noEmit && deno test src",
+    "test": "tsc --noEmit -p tsconfig.test.json && node --test",
     "watch": "tsc --watch"
   },
   "devDependencies": {
+    "@types/node": "^24.0.0",
     "jsr": "^0.14.3",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2"

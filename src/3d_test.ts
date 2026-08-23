@@ -1,10 +1,18 @@
 // This is free and unencumbered software released into the public domain
 
-import { assert, assertAlmostEquals, assertEquals } from "jsr:@std/assert@^1";
+import assert from "node:assert/strict";
+import { test } from "node:test";
 
 import { makeNoise3D } from "./3d.ts";
 
-Deno.test("makeNoise3D returns values in (-1, 1)", () => {
+function assertAlmostEqual(actual: number, expected: number, epsilon = 1e-9) {
+  assert(
+    Math.abs(actual - expected) <= epsilon,
+    `expected ${actual} to be within ${epsilon} of ${expected}`,
+  );
+}
+
+test("makeNoise3D returns values in (-1, 1)", () => {
   const noise3D = makeNoise3D(42);
   for (let x = -3; x <= 3; x += 0.7) {
     for (let y = -3; y <= 3; y += 0.7) {
@@ -19,19 +27,19 @@ Deno.test("makeNoise3D returns values in (-1, 1)", () => {
   }
 });
 
-Deno.test("makeNoise3D is deterministic for a given seed", () => {
+test("makeNoise3D is deterministic for a given seed", () => {
   const a = makeNoise3D(42);
   const b = makeNoise3D(42);
-  assertEquals(a(1.5, 2.5, 3.5), b(1.5, 2.5, 3.5));
+  assert.strictEqual(a(1.5, 2.5, 3.5), b(1.5, 2.5, 3.5));
 });
 
-Deno.test("makeNoise3D differs across seeds", () => {
+test("makeNoise3D differs across seeds", () => {
   const a = makeNoise3D(1);
   const b = makeNoise3D(2);
   assert(a(1.5, 2.5, 3.5) !== b(1.5, 2.5, 3.5));
 });
 
-Deno.test("makeNoise3D matches known output", () => {
+test("makeNoise3D matches known output", () => {
   const noise3D = makeNoise3D(42);
-  assertAlmostEquals(noise3D(1.5, 2.5, 3.5), 0.08691090210355965);
+  assertAlmostEqual(noise3D(1.5, 2.5, 3.5), 0.08691090210355965);
 });
