@@ -1,6 +1,6 @@
 {
   "name": "open-simplex-noise",
-  "version": "3.0.0-pre2",
+  "version": "3.0.0-pre3",
   "description": "OpenSimplex noise for TypeScript/JavaScript",
   "keywords": [
     "noise",
