@@ -19,7 +19,15 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run compile
-      - run: npm publish --provenance
+      - id: version
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if [[ "$version" == *-* ]]; then
+            echo "tag=pre" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+      - run: npm publish --provenance --tag ${{ steps.version.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
